@@ -1,0 +1,18 @@
+{
+  "verbose": true,
+  "restartable": "r",
+  "ignore": ["node_modules/*"],
+  "execMap": {
+    "js": "node ./"
+  },
+  "events": {
+    "restart": "clear && echo \"===== Nodemon restarting =====\n\n \""
+  },
+  "watch": [
+    "source/"
+  ],
+  "env": {
+    "NODE_ENV": "DEV"
+  },
+  "ext": "js json"
+}

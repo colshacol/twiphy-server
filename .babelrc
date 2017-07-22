@@ -1,0 +1,15 @@
+{
+    "plugins": [
+        ["flow-runtime", {
+            "annotate": true,
+            "assert": true
+        }],
+        "transform-decorators-legacy",
+        "transform-class-properties"
+    ],
+    "presets": [
+        "flow-runtime",
+        "stage-0",
+        "env"
+    ]
+}
