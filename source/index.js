@@ -1,4 +1,3 @@
-require('dotenv').config()
 import Koa from 'koa';
 require('regenerator-runtime');
 import koaRouter from 'koa-router';
