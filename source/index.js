@@ -25,6 +25,10 @@ server
   .use(router.routes())
   .use(router.allowedMethods());
 
+server.on('error', err =>
+  console.log('server error', err)
+);
+
 server.listen(3000, () => {
   console.log('[server]', 'LISTEN 3000')
 });
