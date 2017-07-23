@@ -2,6 +2,7 @@ import Koa from 'koa';
 require('regenerator-runtime');
 import koaRouter from 'koa-router';
 import koaBody from 'koa-bodyparser';
+import cors from 'kcors';
 import mongoose from 'mongoose';
 import { graphqlKoa } from 'graphql-server-koa';
 import './models/Entry';
@@ -17,6 +18,7 @@ const router = koaRouter();
 const server = new Koa();
 
 server.use(koaBody());
+server.use(cors());
 
 router.post('/graphql', graphqlKoa({ schema }));
 router.get('/graphql', graphqlKoa({ schema }));
