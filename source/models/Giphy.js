@@ -1,6 +1,7 @@
 
 import mongoose  from 'mongoose';
 mongoose.Promise = global.Promise;
+import findOrCreate from '../utils/findOrCreate';
 import createShortId from '../utils/createShortId';
 
 const giphySchema = mongoose.Schema({
@@ -26,5 +27,7 @@ giphySchema.pre('save', async function(next) {
   this.shortId = await makeShortId()
   next()
 });
+
+giphySchema.plugin(findOrCreate);
 
 export default mongoose.model('Giphy', giphySchema);
