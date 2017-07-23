@@ -2,7 +2,7 @@ let chars = 'abcdefghijklmnopqrstuvwxyz'
 chars = chars.concat(chars.toUpperCase())
 chars = chars.concat('1234567890')
 
-function getRandomInt(min, max) {
+function getRandomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
