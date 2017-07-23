@@ -4,6 +4,8 @@ import koaRouter from 'koa-router';
 import koaBody from 'koa-bodyparser';
 import mongoose from 'mongoose';
 import { graphqlKoa } from 'graphql-server-koa';
+import './models/Entry';
+import schema from './data/schema';
 
 const mongo = mongoose.connect(process.env.DATABASE);
 mongoose.Promise = global.Promise;
@@ -11,21 +13,10 @@ mongoose.connection.on('error', (err) => {
   console.error(err.message);
 });
 
-import './models/Giphy';
-
-import schema from './data/schema';
-
-import { getGiphyByLongId, createGiphy } from './controllers/giphyController';
-
 const router = koaRouter();
 const server = new Koa();
 
 server.use(koaBody());
-
-router.get('/entry/:id', 
-  getGiphyByLongId, 
-  createGiphy
-);
 
 router.post('/graphql', graphqlKoa({ schema }));
 router.get('/graphql', graphqlKoa({ schema }));

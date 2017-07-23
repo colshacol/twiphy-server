@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
-const Giphy = mongoose.model('Giphy');
+const Entry = mongoose.model('Entry');
 
 const resolvers = {
   Query: {
     entry(root, args){
-      return Giphy.findOrCreate(args);
+      return Entry.findOrCreate(args);
     },
   },
   Entry() {
-    return Giphy.findOrCreate(args);
+    return Entry.findOrCreate(args);
   }
 };
 

@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 import findOrCreate from '../utils/findOrCreate';
 import createShortId from '../utils/createShortId';
 
-const giphySchema = mongoose.Schema({
+const entrySchema = mongoose.Schema({
   shortId: String,
   longId: {
     type: String,
@@ -13,21 +13,21 @@ const giphySchema = mongoose.Schema({
   }
 });
 
-giphySchema.pre('save', async function(next) {
+entrySchema.pre('save', async function(next) {
   if (!this.isModified('longId')) {
     return next()
   }
 
   const makeShortId = async () => {
     const shortId = createShortId()
-    const gifsWithShortId = await this.constructor.find({ shortId })
-    return gifsWithShortId.length ? makeShortId() : shortId
+    const entriesWithShortId = await this.constructor.find({ shortId })
+    return entriesWithShortId.length ? makeShortId() : shortId
   }
 
   this.shortId = await makeShortId()
   next()
 });
 
-giphySchema.plugin(findOrCreate);
+entrySchema.plugin(findOrCreate);
 
-export default mongoose.model('Giphy', giphySchema);
+export default mongoose.model('Entry', entrySchema);
