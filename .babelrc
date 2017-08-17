@@ -1,15 +1,16 @@
 {
     "plugins": [
+        "transform-decorators-legacy",
+        "transform-class-properties",
         ["flow-runtime", {
             "annotate": true,
             "assert": true
-        }],
-        "transform-decorators-legacy",
-        "transform-class-properties"
+        }]
     ],
     "presets": [
-        "flow-runtime",
         "stage-0",
+        "flow-runtime",
+        "react",
         "env"
     ]
 }
